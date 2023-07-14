@@ -4,3 +4,7 @@ export interface INote {
   updated: string;
   created: string;
 }
+
+export interface INoteItemProps {
+  note: INote;
+}

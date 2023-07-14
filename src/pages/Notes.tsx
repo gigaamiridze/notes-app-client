@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { INote } from '../interfaces';
+import { NoteItem } from '../layouts';
 import { ApiRoutes } from '../constants';
 
 function Notes() {
-  const [notes, setNotes] = useState<INote | null>(null);
+  const [notes, setNotes] = useState<INote[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
@@ -23,7 +24,14 @@ function Notes() {
   }
 
   return (
-    <div>Notes</div>
+    <>
+      {notes.map((note, index) => (
+        <NoteItem 
+          key={index}
+          note={note} 
+        />
+      ))}
+    </>
   )
 }
 

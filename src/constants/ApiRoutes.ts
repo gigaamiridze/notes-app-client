@@ -1,4 +1,4 @@
 export enum ApiRoutes {
-  HOST = 'http:/localhost:8000/api',
+  HOST = 'http://127.0.0.1:8000/api',
   NOTES = `${HOST}/notes`,
 }
