@@ -1,11 +1,12 @@
+import { RouterProvider } from 'react-router-dom';
 import { GlobalStyles } from './assets';
-import { Notes } from './pages';
+import { router } from './routes';
 
 function App() {
   return (
     <>
       <GlobalStyles />
-      <Notes />
+      <RouterProvider router={router} />
     </>
   )
 }
