@@ -1,6 +1,10 @@
+import { HeaderContainer, HeaderTitle } from '../components';
+
 function Header() {
   return (
-    <div>Header</div>
+    <HeaderContainer>
+      <HeaderTitle>Notes List</HeaderTitle>
+    </HeaderContainer>
   )
 }
 
