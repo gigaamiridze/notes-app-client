@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, css } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
   // Reset styles
@@ -44,6 +44,20 @@ const GlobalStyles = createGlobalStyle`
   a {
     text-decoration: none;
     display: inline-block;
+  }
+
+  // Element styles
+  body {
+    ${({ theme }) => css`
+      background-color: ${theme.colors.bg};
+      font-family: ${theme.fonts.primary};
+      color: ${theme.colors.text};
+    `}
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 `;
 

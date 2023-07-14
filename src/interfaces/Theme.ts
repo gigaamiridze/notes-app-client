@@ -4,8 +4,14 @@ export interface ITheme {
 }
 
 interface IColors {
+  main: string;
+  text: string;
+  dark: string;
+  gray: string;
+  bg: string;
+  lighter: string;
   white: string;
-  black: string;
+  border: string;
 }
 
 interface IFonts {
