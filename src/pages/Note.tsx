@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
+import { MdKeyboardArrowLeft } from 'react-icons/md';
 import axios from 'axios';
 import { INote } from '../interfaces';
-import { ApiRoutes } from '../constants';
+import { ApiRoutes, PageRoutes } from '../constants';
+import { NoteContainer, NoteHeader, ActionButton } from '../components';
 
 function Note() {
   const { id } = useParams();
@@ -25,7 +27,15 @@ function Note() {
   }
 
   return (
-    <div>{note?.body}</div>
+    <NoteContainer>
+      <NoteHeader>
+        <Link to={PageRoutes.ROOT}>
+          <MdKeyboardArrowLeft />
+        </Link>
+        <ActionButton>Done</ActionButton>
+      </NoteHeader>
+      {note?.body}
+    </NoteContainer>
   )
 }
 

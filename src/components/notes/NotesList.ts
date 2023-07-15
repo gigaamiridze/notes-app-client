@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const NotesList = styled.div`
-  margin: 16px 0;
+  margin-top: 16px;
   overflow-y: auto;
   scrollbar-width: none;
   display: flex;
