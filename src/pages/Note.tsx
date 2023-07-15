@@ -4,7 +4,7 @@ import { MdKeyboardArrowLeft } from 'react-icons/md';
 import axios from 'axios';
 import { INote } from '../interfaces';
 import { ApiRoutes, PageRoutes } from '../constants';
-import { NoteContainer, NoteHeader, ActionButton } from '../components';
+import { NoteContainer, NoteHeader, ActionButton, Textarea } from '../components';
 
 function Note() {
   const { id } = useParams();
@@ -34,7 +34,11 @@ function Note() {
         </Link>
         <ActionButton>Done</ActionButton>
       </NoteHeader>
-      {note?.body}
+      <Textarea 
+        placeholder='Edit note'
+        value={note?.body}
+        onChange={(e) => setNote({ ...note, 'body': e.target.value })}
+      />
     </NoteContainer>
   )
 }

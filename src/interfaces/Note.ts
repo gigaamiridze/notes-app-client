@@ -1,8 +1,8 @@
 export interface INote {
-  id: number;
+  id?: number;
   body: string;
-  updated: string;
-  created: string;
+  updated?: string;
+  created?: string;
 }
 
 export interface INoteItemProps {
