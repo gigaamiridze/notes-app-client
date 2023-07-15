@@ -6,7 +6,6 @@ const CardContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
   box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.05);
   border-radius: 7px;
-  position: relative;
 `;
 
 export default CardContainer;

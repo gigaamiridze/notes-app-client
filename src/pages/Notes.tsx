@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { INote } from '../interfaces';
-import { NoteItem } from '../layouts';
 import { ApiRoutes } from '../constants';
-import { NotesHeader, NotesTitle, NotesCount, NotesList } from '../components';
+import { NoteItem, AddButton } from '../layouts';
+import { NotesContainer, NotesHeader, NotesTitle, NotesCount, NotesList } from '../components';
 
 function Notes() {
   const [notes, setNotes] = useState<INote[]>([]);
@@ -25,7 +25,7 @@ function Notes() {
   }
 
   return (
-    <div>
+    <NotesContainer>
       <NotesHeader>
         <NotesTitle>&#9782; Notes</NotesTitle>
         <NotesCount>{notes.length}</NotesCount>
@@ -38,7 +38,8 @@ function Notes() {
           />
         ))}
       </NotesList>
-    </div>
+      <AddButton />
+    </NotesContainer>
   )
 }
 
