@@ -35,6 +35,11 @@ function Note() {
     });
   }
 
+  const handleDelete = async () => {
+    axios.delete(`${ApiRoutes.NOTES}/${id}/delete`, { ...requestHeaders });
+    navigate(PageRoutes.ROOT);
+  }
+
   const handleSubmit = () => {
     updateNote();
     navigate(PageRoutes.ROOT);
@@ -44,7 +49,7 @@ function Note() {
     <NoteContainer>
       <NoteHeader>
         <MdKeyboardArrowLeft onClick={handleSubmit} />
-        <ActionButton>Done</ActionButton>
+        <ActionButton onClick={handleDelete}>Delete</ActionButton>
       </NoteHeader>
       <Textarea 
         placeholder='Edit note'
