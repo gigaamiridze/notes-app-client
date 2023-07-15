@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { MdKeyboardArrowLeft } from 'react-icons/md';
 import axios from 'axios';
 import { INote } from '../interfaces';
+import { requestHeaders } from '../config';
 import { ApiRoutes, PageRoutes } from '../constants';
 import { NoteContainer, NoteHeader, ActionButton, Textarea } from '../components';
 
 function Note() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [note, setNote] = useState<INote | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -26,12 +28,22 @@ function Note() {
     }
   }
 
+  const updateNote = async () => {
+    axios.put(`${ApiRoutes.NOTES}/${id}/update`, {
+      ...requestHeaders,
+      body: note,
+    });
+  }
+
+  const handleSubmit = () => {
+    updateNote();
+    navigate(PageRoutes.ROOT);
+  }
+
   return (
     <NoteContainer>
       <NoteHeader>
-        <Link to={PageRoutes.ROOT}>
-          <MdKeyboardArrowLeft />
-        </Link>
+        <MdKeyboardArrowLeft onClick={handleSubmit} />
         <ActionButton>Done</ActionButton>
       </NoteHeader>
       <Textarea 

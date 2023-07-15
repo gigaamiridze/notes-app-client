@@ -6,14 +6,11 @@ const NoteHeader = styled.div`
   justify-content: space-between;
   margin-bottom: 16px;
 
-  a {
-    color: ${({ theme }) => theme.colors.main};
+  svg {
+    fill: ${({ theme }) => theme.colors.main};
+    transform: translateX(-8px);
     font-size: 28px;
-    height: 28px;
-
-    svg {
-      transform: translateX(-8px);
-    }
+    cursor: pointer;
   }
 `;
 
