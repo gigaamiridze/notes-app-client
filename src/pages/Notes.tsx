@@ -3,7 +3,7 @@ import axios from 'axios';
 import { INote } from '../interfaces';
 import { NoteItem } from '../layouts';
 import { ApiRoutes } from '../constants';
-import { NotesHeader, NotesTitle, NotesCount } from '../components';
+import { NotesHeader, NotesTitle, NotesCount, NotesList } from '../components';
 
 function Notes() {
   const [notes, setNotes] = useState<INote[]>([]);
@@ -30,12 +30,14 @@ function Notes() {
         <NotesTitle>&#9782; Notes</NotesTitle>
         <NotesCount>{notes.length}</NotesCount>
       </NotesHeader>
-      {notes.map((note, index) => (
-        <NoteItem 
-          key={index}
-          note={note} 
-        />
-      ))}
+      <NotesList>
+        {notes.map((note, index) => (
+          <NoteItem 
+            key={index}
+            note={note} 
+          />
+        ))}
+      </NotesList>
     </div>
   )
 }
