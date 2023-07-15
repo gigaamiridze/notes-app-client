@@ -6,6 +6,15 @@ const NotesList = styled.div`
   scrollbar-width: none;
   display: flex;
   flex-direction: column;
+
+  a {
+    &:last-child {
+      div {
+        border-bottom: 0;
+        border-radius: 0 0 7px 7px;
+      }
+    }
+  }
 `;
 
 export default NotesList;
