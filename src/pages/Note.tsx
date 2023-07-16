@@ -11,7 +11,6 @@ function Note() {
   const { id: noteId } = useParams();
   const navigate = useNavigate();
   const [note, setNote] = useState<INote | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const isNoteIdNew = noteId === 'new';
 
   useEffect(() => {
@@ -21,14 +20,8 @@ function Note() {
   const getNote = async () => {
     if (isNoteIdNew) return;
 
-    try {
-      setIsLoading(true);
-      const { data } = await axios.get(`${ApiRoutes.NOTES}/${noteId}`);
-      setNote(data);
-      setIsLoading(false);
-    } catch (err) {
-      setIsLoading(true);
-    }
+    const { data } = await axios.get(`${ApiRoutes.NOTES}/${noteId}`);
+    setNote(data);
   }
 
   const createNote = async () => {

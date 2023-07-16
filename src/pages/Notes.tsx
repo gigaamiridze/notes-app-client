@@ -3,7 +3,7 @@ import axios from 'axios';
 import { NoNoteImg } from '../assets';
 import { INote } from '../interfaces';
 import { ApiRoutes } from '../constants';
-import { NoteItem, AddButton } from '../layouts';
+import { NoteItem, Loader, AddButton } from '../layouts';
 import { NotesHeader, NotesTitle, NotesCount, NotesList, NoNotes } from '../components';
 
 function Notes() {
@@ -21,7 +21,7 @@ function Notes() {
       setNotes(data);
       setIsLoading(false);
     } catch (err) {
-      setIsLoading(true);
+      setIsLoading(false);
     }
   }
 
@@ -31,17 +31,19 @@ function Notes() {
         <NotesTitle>&#9782; Notes</NotesTitle>
         <NotesCount>{notes.length}</NotesCount>
       </NotesHeader>
-      {notes.length > 0 ? (
+      {isLoading ? (
+        <Loader />
+      ) : notes.length === 0 && !isLoading ? (
+        <NoNotes src={NoNoteImg} alt='No Note' />
+      ) : (
         <NotesList>
           {notes.map((note, index) => (
-            <NoteItem 
+            <NoteItem
               key={index}
-              note={note} 
+              note={note}
             />
           ))}
         </NotesList>
-      ) : (
-        <NoNotes src={NoNoteImg} alt='No Note' />
       )}
       <AddButton />
     </div>
