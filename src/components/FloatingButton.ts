@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 const FloatingButton = styled.button`
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   background-color: ${({ theme }) => theme.colors.main};
   outline: none;
   border: none;

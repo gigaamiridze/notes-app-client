@@ -58,6 +58,7 @@ const GlobalStyles = createGlobalStyle`
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow-y: hidden;
   }
 `;
 
