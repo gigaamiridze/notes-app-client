@@ -8,19 +8,22 @@ import { ApiRoutes, PageRoutes } from '../constants';
 import { NoteContainer, NoteHeader, ActionButton, Textarea } from '../components';
 
 function Note() {
-  const { id } = useParams();
+  const { id: noteId } = useParams();
   const navigate = useNavigate();
   const [note, setNote] = useState<INote | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const isNoteIdNew = noteId === 'new';
 
   useEffect(() => {
     getNote();
-  }, [id]);
+  }, [noteId]);
 
   const getNote = async () => {
+    if (isNoteIdNew) return;
+
     try {
       setIsLoading(true);
-      const { data } = await axios.get(`${ApiRoutes.NOTES}/${id}`);
+      const { data } = await axios.get(`${ApiRoutes.NOTES}/${noteId}`);
       setNote(data);
       setIsLoading(false);
     } catch (err) {
@@ -28,33 +31,55 @@ function Note() {
     }
   }
 
+  const createNote = async () => {
+    axios.post(ApiRoutes.CREATE_NOTE, {
+      ...requestHeaders,
+      body: note,
+    })
+  }
+
   const updateNote = async () => {
-    axios.put(`${ApiRoutes.NOTES}/${id}/update`, {
+    axios.put(`${ApiRoutes.NOTES}/${noteId}/update`, {
       ...requestHeaders,
       body: note,
     });
   }
 
-  const handleDelete = async () => {
-    axios.delete(`${ApiRoutes.NOTES}/${id}/delete`, { ...requestHeaders });
+  const deleteNote = async () => {
+    axios.delete(`${ApiRoutes.NOTES}/${noteId}/delete`, { ...requestHeaders });
     navigate(PageRoutes.ROOT);
   }
 
   const handleSubmit = () => {
-    updateNote();
+    if (!isNoteIdNew && note?.body === '') {
+      deleteNote();
+    } else if (!isNoteIdNew) {
+      updateNote();
+    } else if (isNoteIdNew && note?.body !== undefined) {
+      createNote();
+    }
+    
     navigate(PageRoutes.ROOT);
+  }
+
+  const handleChange = (value: string) => {
+    setNote({ ...note, 'body': value }) 
   }
 
   return (
     <NoteContainer>
       <NoteHeader>
         <MdKeyboardArrowLeft onClick={handleSubmit} />
-        <ActionButton onClick={handleDelete}>Delete</ActionButton>
+        {isNoteIdNew ? (
+          <ActionButton onClick={handleSubmit}>Done</ActionButton>
+        ) : (
+          <ActionButton onClick={deleteNote}>Delete</ActionButton>
+        )}
       </NoteHeader>
       <Textarea 
-        placeholder='Edit note'
+        placeholder={isNoteIdNew ? 'Note body' : 'Edit note'}
         value={note?.body}
-        onChange={(e) => setNote({ ...note, 'body': e.target.value })}
+        onChange={(e) => handleChange(e.target.value)}
       />
     </NoteContainer>
   )
