@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { NoNoteImg } from '../assets';
 import { INote } from '../interfaces';
 import { ApiRoutes } from '../constants';
 import { NoteItem, AddButton } from '../layouts';
-import { NotesHeader, NotesTitle, NotesCount, NotesList } from '../components';
+import { NotesHeader, NotesTitle, NotesCount, NotesList, NoNotes } from '../components';
 
 function Notes() {
   const [notes, setNotes] = useState<INote[]>([]);
@@ -30,14 +31,18 @@ function Notes() {
         <NotesTitle>&#9782; Notes</NotesTitle>
         <NotesCount>{notes.length}</NotesCount>
       </NotesHeader>
-      <NotesList>
-        {notes.map((note, index) => (
-          <NoteItem 
-            key={index}
-            note={note} 
-          />
-        ))}
-      </NotesList>
+      {notes.length > 0 ? (
+        <NotesList>
+          {notes.map((note, index) => (
+            <NoteItem 
+              key={index}
+              note={note} 
+            />
+          ))}
+        </NotesList>
+      ) : (
+        <NoNotes src={NoNoteImg} alt='No Note' />
+      )}
       <AddButton />
     </div>
   )

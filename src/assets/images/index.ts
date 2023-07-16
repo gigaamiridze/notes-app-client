@@ -1,0 +1,1 @@
+export { default as NoNoteImg } from './no-note.png';
