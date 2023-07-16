@@ -14,13 +14,19 @@ function NoteItem({ note }: INoteItemProps) {
 
     return title;
   }
+
+  const getTime = (updated: string | undefined) => {
+    if (updated) {
+      return new Date(updated).toLocaleDateString();
+    }
+  }
   
   return (
     <Link to={`${PageRoutes.NOTE}/${id}`}>
       <NotesListItem>
         <h3>{getTitle(body)}</h3>
         <p>
-          <span>9/1/2023</span>
+          <span>{getTime(updated)}</span>
           {body}
         </p>
       </NotesListItem>
