@@ -12,6 +12,10 @@ const ActionButton = styled.button`
   border: none;
   outline: none;
   cursor: pointer;
+
+  @media (max-width: 380px) {
+    font-size: 17px;
+  }
 `;
 
 export default ActionButton;

@@ -59,6 +59,30 @@ const GlobalStyles = createGlobalStyle`
     align-items: center;
     justify-content: center;
     overflow-y: hidden;
+
+    @media (max-width: 550px) {
+      padding: 0 35px;
+    }
+
+    @media (max-width: 480px) {
+      padding: 0 25px;
+    }
+
+    @media (max-width: 380px) {
+      padding: 0 20px;
+    }
+
+    @media (max-width: 320px) {
+      padding: 0 15px;
+    }
+  }
+
+  #root {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 `;
 

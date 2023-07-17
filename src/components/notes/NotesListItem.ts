@@ -11,6 +11,10 @@ const NotesListItem = styled.div`
     background-color: ${({ theme }) => theme.colors.bg};
   }
 
+  @media (max-width: 380px) {
+    padding: 13px 16px;
+  }
+
   h3, p, span {
     font-weight: 600;
   }
@@ -19,14 +23,23 @@ const NotesListItem = styled.div`
     color: ${({ theme }) => theme.colors.text};
     font-size: 18px;
     margin-bottom: 10px;
+
+    @media (max-width: 380px) {
+      font-size: 16px;
+    }
   }
 
   p, span {
     font-size: 14px;
+
+    @media (max-width: 380px) {
+      font-size: 13px;
+    }
   }
 
   p {
     color: ${({ theme }) => theme.colors.light};
+    line-height: 17px;
 
     span {
       color: ${({ theme }) => theme.colors.gray};

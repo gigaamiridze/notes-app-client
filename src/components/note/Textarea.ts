@@ -7,7 +7,8 @@ const Textarea = styled.textarea`
   `}
   font-size: 16px; 
   width: 100%;
-  height: 70vh;
+  height: 63vh;
+  line-height: 22px;
   background-color: transparent;
   border: none;
   resize: none;
@@ -25,6 +26,10 @@ const Textarea = styled.textarea`
 
   &::-webkit-scrollbar {
     display: none;
+  }
+
+  @media (max-width: 380px) {
+    font-size: 15px;
   }
 `;
 

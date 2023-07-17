@@ -17,6 +17,12 @@ const FloatingButton = styled.button`
   svg {
     fill: ${({ theme }) => theme.colors.bg};
   }
+
+  @media (max-width: 380px) {
+    width: 45px;
+    height: 45px;
+    font-size: 30px;
+  }
 `;
 
 export default FloatingButton;

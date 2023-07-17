@@ -10,6 +10,10 @@ const NotesList = styled.div`
 
   &::-webkit-scrollbar {
     width: 3px;
+
+    @media (max-width: 380px) {
+      width: 2px;
+    }
   }
  
   &::-webkit-scrollbar-thumb {
@@ -24,6 +28,15 @@ const NotesList = styled.div`
         border-radius: 0 0 7px 7px;
       }
     }
+  }
+
+  @media (max-width: 768px) {
+    height: calc(88vh - 132px);
+  }
+
+  @media (max-width: 380px) {
+    height: calc(88vh - 122px);
+    margin-top: 10px;
   }
 `;
 
