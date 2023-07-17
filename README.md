@@ -1,6 +1,6 @@
 ## Django and React Notes App
 
-**React source code: [here](https://github.com/gigaamiridze/notes-app-client)**
+**Django source code: [here](https://github.com/gigaamiridze/notes-app-server)**
 
 ![Notes App Wallpaper](./src/assets/images/notes-wallpaper.jpg)
 
