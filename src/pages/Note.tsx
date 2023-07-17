@@ -26,21 +26,21 @@ function Note() {
   }
 
   const createNote = async () => {
-    axios.post(ApiRoutes.CREATE_NOTE, {
+    axios.post(ApiRoutes.NOTES, {
       ...requestHeaders,
       body: note,
     })
   }
 
   const updateNote = async () => {
-    axios.put(`${ApiRoutes.NOTES}/${noteId}/update`, {
+    axios.put(`${ApiRoutes.NOTES}/${noteId}`, {
       ...requestHeaders,
       body: note,
     });
   }
 
   const deleteNote = async () => {
-    axios.delete(`${ApiRoutes.NOTES}/${noteId}/delete`, { ...requestHeaders });
+    axios.delete(`${ApiRoutes.NOTES}/${noteId}`, { ...requestHeaders });
     navigate(PageRoutes.ROOT);
   }
 
