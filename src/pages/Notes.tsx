@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import axios from 'axios';
 import { NoNoteImg } from '../assets';
 import { INote } from '../interfaces';
+import { opacity } from '../animations';
 import { ApiRoutes } from '../constants';
 import { NoteItem, Loader, AddButton } from '../layouts';
 import { NotesHeader, NotesTitle, NotesCount, NotesList, NoNotes } from '../components';
@@ -26,7 +28,11 @@ function Notes() {
   }
 
   return (
-    <div>
+    <motion.div
+      variants={opacity}
+      initial='initial'
+      animate='animate'
+    >
       <NotesHeader>
         <NotesTitle>&#9782; Notes</NotesTitle>
         <NotesCount>{notes.length}</NotesCount>
@@ -46,7 +52,7 @@ function Notes() {
         </NotesList>
       )}
       <AddButton />
-    </div>
+    </motion.div>
   )
 }
 

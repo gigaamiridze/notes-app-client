@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { MdKeyboardArrowLeft } from 'react-icons/md';
 import axios from 'axios';
 import { INote } from '../interfaces';
+import { opacity } from '../animations';
 import { requestHeaders } from '../config';
 import { ApiRoutes, PageRoutes } from '../constants';
 import { NoteContainer, NoteHeader, ActionButton, Textarea } from '../components';
@@ -60,7 +61,11 @@ function Note() {
   }
 
   return (
-    <NoteContainer>
+    <NoteContainer
+      variants={opacity}
+      initial='initial'
+      animate='animate'
+    >
       <NoteHeader>
         <MdKeyboardArrowLeft onClick={handleSubmit} />
         {isNoteIdNew ? (
