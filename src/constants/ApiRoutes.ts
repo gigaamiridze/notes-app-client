@@ -1,4 +1,4 @@
 export enum ApiRoutes {
-  HOST = 'http://127.0.0.1:8000/api',
-  NOTES = `${HOST}/notes`,
+  HOST = 'https://notes-app-server-vy0u.onrender.com',
+  NOTES = `${HOST}/api/notes`,
 }
